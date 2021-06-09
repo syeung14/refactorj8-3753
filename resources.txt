@@ -1,0 +1,4 @@
+GIT repository:
+  URL: https://www.javaspecialists.eu/git/safari/refactorj8-3753.git
+  Username: safari3753
+  Password: iadCyq+w
