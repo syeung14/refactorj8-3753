@@ -79,9 +79,7 @@ public abstract class EntityFunction<T extends Comparable<?>> extends EntityCond
      */
     public static class TRIM extends EntityFunctionSingle<String> {
         // REFACTOR: Replace anonymous type with lambda
-        public static final Fetcher<String> FETCHER = new Fetcher<String>() {
-            public String getValue(Object value) { return value.toString().trim(); }
-        };
+        public static final Fetcher<String> FETCHER = value -> value.toString().trim();
 
         private TRIM(Object value) {
             super(FETCHER, SQLFunction.TRIM, value);
@@ -109,9 +107,7 @@ public abstract class EntityFunction<T extends Comparable<?>> extends EntityCond
      */
     public static class LOWER extends EntityFunctionSingle<String> {
         // REFACTOR: Replace anonymous type with lambda
-        public static final Fetcher<String> FETCHER = new Fetcher<String>() {
-            public String getValue(Object value) { return value.toString().toLowerCase(Locale.getDefault()); }
-        };
+        public static final Fetcher<String> FETCHER = value -> value.toString().toLowerCase(Locale.getDefault());
 
         private LOWER(Object value) {
             super(FETCHER, SQLFunction.LOWER, value);

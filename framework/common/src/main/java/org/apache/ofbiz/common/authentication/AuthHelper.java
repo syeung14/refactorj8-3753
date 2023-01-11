@@ -132,17 +132,15 @@ public final class AuthHelper {
      */
     private static ClassLoader getContextClassLoader() {
         return AccessController.doPrivileged(
-            // REFACTOR: Replace anonymous type with lambda
-            new PrivilegedAction<ClassLoader>() {
-                    public ClassLoader run() {
-                        ClassLoader cl = null;
-                        try {
-                            cl = Thread.currentThread().getContextClassLoader();
-                        } catch (SecurityException e) {
-                            Debug.logError(e, e.getMessage(), module);
-                        }
-                        return cl;
+                // REFACTOR: Replace anonymous type with lambda
+                (PrivilegedAction<ClassLoader>) () -> {
+                    ClassLoader cl = null;
+                    try {
+                        cl = Thread.currentThread().getContextClassLoader();
+                    } catch (SecurityException e) {
+                        Debug.logError(e, e.getMessage(), module);
                     }
+                    return cl;
                 });
     }
 }

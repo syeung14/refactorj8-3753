@@ -532,16 +532,13 @@ public class DataResourceWorker  implements org.apache.ofbiz.widget.content.Data
 
         // descending comparator
         // REFACTOR: Replace anonymous type with lambda
-        Comparator<Object> desc = new Comparator<Object>() {
-            @Override
-            public int compare(Object o1, Object o2) {
-                if ((Long) o1 > (Long) o2) {
-                    return -1;
-                } else if ((Long) o1 < (Long) o2) {
-                    return 1;
-                }
-                return 0;
+        Comparator<Object> desc = (o1, o2) -> {
+            if ((Long) o1 > (Long) o2) {
+                return -1;
+            } else if ((Long) o1 < (Long) o2) {
+                return 1;
             }
+            return 0;
         };
 
         // check for the latest subdirectory
